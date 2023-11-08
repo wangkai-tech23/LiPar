@@ -47,12 +47,11 @@ def main():
                                                   batch_size=batch_size, shuffle=True,
                                                   num_workers=nw)
     print(predict_loader)
-    # net = ParLSTM(input_size=input_size, hidden_size=hidden_size,
-    #                 num_layers=num_layers, num_classes=num_classes, init_weights=False)
+    
     net = CANet(input_size=input_size, hidden_size=hidden_size,
                 num_layers=num_layers, num_classes=num_classes, init_weights=False)
     # load model weights
-    # model_weight_path = "weight_res/ParLSTMtry.pth"
+    
     model_weight_path = "./CANet_15.pth"
     net.load_state_dict(torch.load(model_weight_path))
     net.eval()
