@@ -29,21 +29,7 @@ def main():
                                    transforms.ToTensor(),
                                    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])}
 
-    # data_root = os.path.abspath(os.path.join(os.getcwd(), "../.."))  # get data root path
-    # image_path = os.path.join(data_root, "data_set", "flower_data")  # flower data set path
-    # assert os.path.exists(image_path), "{} path does not exist.".format(image_path)
-    # train_dataset = datasets.ImageFolder(root=os.path.join(image_path, "train"),
-    #                                      transform=data_transform["train"])
-    # train_num = len(train_dataset)
-    #
-    # # {'daisy':0, 'dandelion':1, 'roses':2, 'sunflower':3, 'tulips':4}
-    # flower_list = train_dataset.class_to_idx
-    # cla_dict = dict((val, key) for key, val in flower_list.items())
-    # # write dict into json file
-    # json_str = json.dumps(cla_dict, indent=4)
-    #
-    # with open('class_indices.json', 'w') as json_file:
-    #     json_file.write(json_str)
+    
 
     data_root = os.path.abspath(os.path.join(os.getcwd(), "../../"))  # get data root path
     image_path = os.path.join(data_root, "LPN", "data_sequential_img")  # flower data set path
@@ -72,25 +58,7 @@ def main():
                                                                            val_num))
 
     # create model
-    # net = MobileNetV2(num_classes=5)
     net = mobilenet_v3_small(num_classes=5)
-
-    # # load pretrain weights （使用迁移学习，加载现成的权重）
-    # # download url: https://download.pytorch.org/models/mobilenet_v2-b0353104.pth
-    # model_weight_path = "./mobilenet_v2.pth"
-    # assert os.path.exists(model_weight_path), "file {} dose not exist.".format(model_weight_path)
-    # pre_weights = torch.load(model_weight_path, map_location='cpu')  # 载入后为字典类型
-    #
-    # # delete classifier weights
-    # pre_dict = {k: v for k, v in pre_weights.items() if net.state_dict()[k].numel() == v.numel()}
-    # # 遍历权重字典，看权重中是否含有对应参数，如果不在则直接保存到pre_dict字典当中
-    # missing_keys, unexpected_keys = net.load_state_dict(pre_dict, strict=False)  # 载入权重
-    #
-    # # freeze features weights （冻结特征提取的所有权重）
-    # for param in net.features.parameters():
-    #     param.requires_grad = False
-    #
-    # net.to(device)
 
     # define loss function
     loss_function = nn.CrossEntropyLoss()
