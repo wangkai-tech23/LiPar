@@ -2,26 +2,6 @@ from torch import nn
 import torch
 from torchsummary import summary
 
-# def _make_divisible(ch, divisor=8, min_ch=None):  # 将通道数调整为divisor的整倍数，min-ch是最小通道数设置
-#     """
-#     This function is taken from the original tf repo.
-#     It ensures that all layers have a channel number that is divisible by 8
-#     It can be seen here:
-#     https://github.com/tensorflow/models/blob/master/research/slim/nets/mobilenet/mobilenet.py
-#     """
-#     if min_ch is None:
-#         min_ch = divisor
-#     new_ch = max(min_ch, int(ch + divisor / 2) // divisor * divisor)
-#     # int后面这一段的目的是将ch调整到最近的divisor整倍数的数值；
-#     # 类似四舍五入的操作，（ch+divisor/2）/divisor取整，然后再乘以divisor则可以得到整倍数的数值；
-#     # "//"表示将结果自动向下取整；
-#     # 整体意思：余数超过4则向上取整，否则向下取整
-#
-#     # Make sure that round down does not go down by more than 10%. 确保向下取整时，不会比ch少10%
-#     if new_ch < 0.9 * ch:  # 若小于则再加一倍
-#         new_ch += divisor
-#     return new_ch
-
 class ConvBNReLU(nn.Sequential):
     def __init__(self, in_channel, out_channel, kernel_size=3, stride=1, groups=1):
         # group如果等于输入特征模型的深度，则为DW卷积
