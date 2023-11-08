@@ -35,15 +35,6 @@ def main():
     train_num = len(train_dataset)
     print(train_num)
 
-    # # {'normal':0, 'DoS':1, 'Fuzzy':2, 'Gear':3, 'RPM':4}
-    # CAN_list = train_dataset.class_to_idx
-    # cla_dict = dict((val, key) for key, val in CAN_list.items())
-    # # write dict into json file
-    # json_str = json.dumps(cla_dict, indent=4)
-    #
-    # with open('class_indices.json', 'w') as json_file:
-    #     json_file.write(json_str)
-
     nw = min([os.cpu_count(), batch_size if batch_size > 1 else 0, 8])  # number of workers
     print('Using {} dataloader workers every process'.format(nw))
 
@@ -65,20 +56,6 @@ def main():
     net = CANet(input_size=input_size, hidden_size=hidden_size,
                 num_layers=num_layers, num_classes=num_classes, init_weights=True)
 
-    # # load pretrain weights （使用迁移学习，加载现成的权重）
-    # # download url: https://download.pytorch.org/models/mobilenet_v2-b0353104.pth
-    # model_weight_path = "./mobilenet_v2.pth"
-    # assert os.path.exists(model_weight_path), "file {} dose not exist.".format(model_weight_path)
-    # pre_weights = torch.load(model_weight_path, map_location='cpu')  # 载入后为字典类型
-    #
-    # # delete classifier weights
-    # pre_dict = {k: v for k, v in pre_weights.items() if net.state_dict()[k].numel() == v.numel()}
-    # # 遍历权重字典，看权重中是否含有对应参数，如果不在则直接保存到pre_dict字典当中
-    # missing_keys, unexpected_keys = net.load_state_dict(pre_dict, strict=False)  # 载入权重
-    #
-    # # freeze features weights （冻结特征提取的所有权重）
-    # for param in net.features.parameters():
-    #     param.requires_grad = False
 
     # define loss function
     loss_function = nn.CrossEntropyLoss()
