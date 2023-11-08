@@ -6,7 +6,6 @@ file_path = '../../Car-Hacking Dataset/normal.csv'
 
 # Read dataset
 df = pd.read_csv(file_path, header=None, usecols=[2, 4, 5, 6, 7, 8, 9, 10, 11])
-# df
 
 # Add fieldnames
 df.columns = ['CAN_ID', 'Data[0]', 'Data[1]', 'Data[2]', 'Data[3]',
@@ -17,30 +16,10 @@ df.columns = ['CAN_ID', 'Data[0]', 'Data[1]', 'Data[2]', 'Data[3]',
 rule = {'CAN_ID': '0000', 'Data[0]': '00', 'Data[1]': '00', 'Data[2]': '00', 'Data[3]': '00',
         'Data[4]': '00', 'Data[5]': '00', 'Data[6]': '00', 'Data[7]': '00'}
 df.fillna(rule, inplace=True)
-# df.loc[df["Data[1]"].isin(['R']), "Data[1]"] = '00'
-# df.loc[df["Data[2]"].isin(['R']), "Data[2]"] = '00'
-# df.loc[df["Data[3]"].isin(['R']), "Data[3]"] = '00'
-# df.loc[df["Data[4]"].isin(['R']), "Data[4]"] = '00'
-# df.loc[df["Data[5]"].isin(['R']), "Data[5]"] = '00'
-# df.loc[df["Data[6]"].isin(['R']), "Data[6]"] = '00'
-# df.loc[df["Data[7]"].isin(['R']), "Data[7]"] = '00'
 
-
-# Convert hex to dec
-# df.CAN_ID = df['CAN_ID'].apply(int, base=16)
-# df['Data[0]'] = df['Data[0]'].apply(int, base=16)
-# df['Data[1]'] = df['Data[1]'].apply(int, base=16)
-# df['Data[2]'] = df['Data[2]'].apply(int, base=16)
-# df['Data[3]'] = df['Data[3]'].apply(int, base=16)
-# df['Data[4]'] = df['Data[4]'].apply(int, base=16)
-# df['Data[5]'] = df['Data[5]'].apply(int, base=16)
-# df['Data[6]'] = df['Data[6]'].apply(int, base=16)
-# df['Data[7]'] = df['Data[7]'].apply(int, base=16)
-# df
 
 # Add label column
 df.insert(loc=len(df.columns), column='Label', value='R')
-# df
 
 # Save to new file
 df.to_csv('./normal_dataset.csv', index=False)
