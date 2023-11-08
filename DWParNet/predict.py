@@ -19,8 +19,6 @@ def main():
     batch_size = 32
     num_classes = 5
 
-    # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
     transform = transforms.Compose([transforms.ToTensor(),
                                     transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])])
     # transform = transforms.Compose([transforms.RandomResizedCrop(16),
