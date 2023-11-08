@@ -10,9 +10,8 @@ import torchmetrics
 from torchmetrics.classification import MulticlassConfusionMatrix
 from torchsummary import summary
 
-# from par_LSTM import ParLSTM
-from par_DW_LSTM4 import ParDWLSTM
 
+from par_DW_LSTM4 import ParDWLSTM
 
 # Test_Dir = '../data_img/test/'
 
@@ -52,7 +51,6 @@ def main():
     net = ParDWLSTM(input_size=input_size, hidden_size=hidden_size,
                     num_layers=num_layers, num_classes=num_classes, init_weights=False)
     # load model weights
-    # model_weight_path = "weight_res/ParLSTMtry.pth"
     model_weight_path = "weight_res_seq/ParDWLSTM7_20.pth"
     net.load_state_dict(torch.load(model_weight_path))
     net.eval()
