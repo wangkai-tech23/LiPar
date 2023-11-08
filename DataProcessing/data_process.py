@@ -2,11 +2,11 @@ import pandas as pd
 import warnings
 warnings.filterwarnings("ignore")
 
+# change the file name to reprocess different types of attack data
 file_path = '../Car-Hacking Dataset/Spoofing_the_RPM_gauge_dataset.csv'
 
 # Read dataset
 df = pd.read_csv(file_path, header=None, usecols=[1, 3, 4, 5, 6, 7, 8, 9, 10, 11])
-# df
 
 # Add fieldnames
 df.columns = ['CAN_ID', 'Data[0]', 'Data[1]', 'Data[2]', 'Data[3]',
@@ -36,7 +36,6 @@ df['Data[4]'] = df['Data[4]'].apply(int, base=16)
 df['Data[5]'] = df['Data[5]'].apply(int, base=16)
 df['Data[6]'] = df['Data[6]'].apply(int, base=16)
 df['Data[7]'] = df['Data[7]'].apply(int, base=16)
-# df
 
 # Save to new file
 df.to_csv('./DataProcess/RPM_dataset.csv', index=False)
