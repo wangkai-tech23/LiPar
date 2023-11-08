@@ -48,8 +48,7 @@ def main():
                                                   batch_size=batch_size, shuffle=True,
                                                   num_workers=nw)
     print(predict_loader)
-    # net = ParLSTM(input_size=input_size, hidden_size=hidden_size,
-    #                 num_layers=num_layers, num_classes=num_classes, init_weights=False)
+   
     net = ParDWLSTM(input_size=input_size, hidden_size=hidden_size,
                     num_layers=num_layers, num_classes=num_classes, init_weights=False)
     # load model weights
