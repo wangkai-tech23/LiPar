@@ -20,9 +20,19 @@ The codes for data processing are uploaded in `./DataProcessing/`. Here are the 
 
 For learning-based models, first of all, the model should be trained, and then we can obtain the optimal weights and parameters value in the model through training. Finally, the weights and parameters obtained are loaded into the model for testing, so as to verify the final detection performance of the model.
 
-Therefore, we construct two programs for each model, respectively for model training process and testing process. You can find files like `train.py`, `train_LSTM.py` or  `train_CANet.py` are for model training process, and files like `predict.py`, `predict_LSTM.py` or `predict_CANet.py` are for model testing process. 
+Therefore, we construct two programs for each model, respectively for model training process and testing process. You can find files like `train.py`, `train_LSTM.py` or  `train_CANet.py` are for model training process, and files like `predict.py`, `predict_LSTM.py` or `predict_CANet.py` are for model testing process.
 
-Take STParNet as an example, all of the files for model construction, model training and testing are stored under the same directory `./STParNet/`. Before training, you should import the model you want to train by code like `from par_DW_LSTM4 import ParDWLSTM`. Here, the `par_DW_LSTM4` is the name of python file which contructs the model and `ParDWLSTM` is the main class of the model. You should also set the path of input images. The `image_path` refers to the directory where all the images are located, the `root`  in `train_dataset` refers to the directory of training set and the `root` in `validate_dataset` refers to the directory of validation set.
+Take STParNet as an example, all of the files for model construction, model training and testing are stored under the same directory `./STParNet/`. Before training, you should import the model you want to train by code like `from par_DW_LSTM4 import ParDWLSTM`. Here, the `par_DW_LSTM4` is the name of python file which contructs the model and `ParDWLSTM` is the main class of the model. You should also set the path of input images. The `image_path` refers to the directory where all the images are located, the `root`  in `train_dataset` refers to the directory of training set and the `root` in `validate_dataset` refers to the directory of validation set. Besides, `save_path` refers to the path for saving the file of optimal weights and parameters, which is in .pth format.
+
+Similarly, when testing models, we may need to change the data path used for testing at `image_path` and the path to load the trained model parameter file at `model_weight_path` in `predict.py`.
+
+## The Model Size Statistics
+
+The codes for model size testing are uploaded in `./MemoryTest/`. Running each program can obtain the memory consumption of each part of the model.
+
+## The Resource Adaptation Algorithm
+
+The code of resource adaption algorithm is uploaded in `./ResouceAdaptationModel/`. The specific parameters in code need to be set according to the actual requirements.
 
 
 
