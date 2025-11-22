@@ -34,6 +34,8 @@ The codes for model size testing are uploaded in `./MemoryTest/`. Running each p
 
 The code of resource adaption algorithm is uploaded in `./ResouceAdaptationModel/`. The specific parameters in code need to be set according to the actual requirements.
 
+Please contact zahboyos@163.com if you have other questions.
+
 
 
 
